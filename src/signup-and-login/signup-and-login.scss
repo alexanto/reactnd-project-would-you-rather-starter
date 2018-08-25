@@ -3,7 +3,31 @@
 .container {
   max-width: 330px;
   margin: auto;
-  text-align: center;
+
+  &.register {
+    max-width: 500px;
+    
+    label {
+      float: left;
+    }
+
+    input {
+      margin-bottom: 16px;
+    }
+
+    button {
+      max-width: 150px;
+
+      &.sign-up {
+        margin-top: 8px;
+        margin-bottom: 24px;
+      }
+
+      &.login {
+        margin-top: 8px;
+      }
+    }
+  }
 
   .logo {
     align-items: center;

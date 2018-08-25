@@ -6,8 +6,8 @@ import {
 import './App.scss';
 import NotFound from './notfound/NotFound';
 import Home from './homepage/Home';
-import LoginPage from './login/LoginPage';
-import SignUpPage from './signup/SignUpPage';
+import LoginPage from './signup-and-login/LoginPage';
+import SignUpPage from './signup-and-login/SignUpPage';
 import CreateQuestionPage from './create-question/CreateQuestionPage';
 import LeaderBoardPage from './leaderboard/LeaderBoardPage';
 
