@@ -1,0 +1,19 @@
+@import '../index.scss';
+
+.row {
+  text-align: center;
+
+  h1,
+  h2,
+  p {
+    color: $primary;
+  }
+
+  button {
+    margin-top: 24px;
+  }
+
+  .glyphicon {
+    margin-right: 8px;
+  }
+}
