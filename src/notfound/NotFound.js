@@ -2,12 +2,14 @@ import React from 'react';
 import { Grid, Row, Col, Button, Glyphicon } from "react-bootstrap";
 import './NotFound.scss';
 
+
+//https://bootsnipp.com/snippets/Qb71
 class NotFound extends React.Component {
     render() {
         return (
             <Grid>
                 <Row>
-                    <Col class="col-md-12">
+                    <Col md={12}>
                         <code>
                             <h1>
                                 Oops!</h1>

@@ -1,0 +1,57 @@
+@import '../index.scss';
+
+.container {
+  max-width: 330px;
+  margin: auto;
+  text-align: center;
+
+  .logo {
+    align-items: center;
+    background: $gray;
+    border-radius: 10px;
+    color: $white;
+    display: flex;
+    font-family: 'Pacifico', cursive;
+    font-size: 22px;
+    height: 100px;
+    justify-content: center;
+    margin: auto;
+    width: 100px;
+  }
+
+  h1 {
+    color: $black;
+    margin-bottom: 16px;
+  }
+
+  input {
+    height: 48px;
+
+    &.username {
+      border-radius: 4px 4px 0 0;
+    }
+
+    &.pwd {
+      border-top: none;
+      border-radius: 0 0 4px 4px;
+    }
+  }
+
+  p {
+    color: $black;
+    margin-bottom: 0;
+  }
+
+  button {
+    font-size: 18px;
+    width: 100%;
+
+    &.sign-in {
+      margin-bottom: 24px;
+    }
+
+    &.sign-up {
+      margin-top: 8px;
+    }
+  }
+}

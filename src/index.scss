@@ -1,8 +1,16 @@
 $primary: #428bca;
 $primary-dark: #357ebd;
+$gray: #343a40;
+$white: #fff;
+$black: #212529;
 
 body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+  min-height: 100vh;
+
+  #root {
+    min-height: 100vh;
+  }
 }
