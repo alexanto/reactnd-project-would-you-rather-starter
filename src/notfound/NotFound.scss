@@ -11,6 +11,14 @@
 
   button {
     margin-top: 24px;
+
+    a {
+      color: #ffffff;
+
+      &:hover {
+        text-decoration: none;
+      }
+    }
   }
 
   .glyphicon {

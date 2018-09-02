@@ -1,0 +1,36 @@
+.navigation {
+  display: flex;
+
+  .container {
+    max-width: 960px;
+
+    .navbar-brand,
+    li a {
+      height: 60px;
+      line-height: 30px;
+    }
+
+    .avatar {
+
+      a {
+        display: flex;
+        align-items: center;
+
+        &>div {
+          background: #fff;
+          border: 2px solid #555;
+          border-radius: 50%;
+          height: 30px;
+          margin-left: 10px;
+          width: 30px;
+
+          div {
+            height: 26px;
+            background-repeat: no-repeat;
+            background-size: 100%;
+          }
+        }
+      }
+    }
+  }
+}

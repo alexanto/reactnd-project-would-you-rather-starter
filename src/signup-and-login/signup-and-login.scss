@@ -1,11 +1,17 @@
 @import '../index.scss';
 
 .container {
-  max-width: 330px;
+
   margin: auto;
+
+  &.login {
+    max-width: 330px;
+    margin: auto;
+  }
 
   &.register {
     max-width: 500px;
+    margin: auto;
     
     label {
       float: left;

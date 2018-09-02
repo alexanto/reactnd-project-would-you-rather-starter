@@ -1,7 +1,7 @@
 import React from 'react';
 import { Grid, Row, Col, Button, Glyphicon } from "react-bootstrap";
 import './NotFound.scss';
-
+import { Link } from 'react-router-dom';
 
 //https://bootsnipp.com/snippets/Qb71
 class NotFound extends React.Component {
@@ -21,7 +21,7 @@ class NotFound extends React.Component {
                         </code>
                         <Button bsStyle="primary">
                             <Glyphicon glyph="home" />
-                            Take Me Home
+                            <Link to="/">Take Me Home</Link>
                         </Button>
                     </Col>
                 </Row>

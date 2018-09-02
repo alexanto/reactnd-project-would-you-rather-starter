@@ -5,7 +5,7 @@ import './signup-and-login.scss';
 class LoginPage extends Component {
     render() {
         return (
-            <Grid>
+            <Grid className="login">
                 <Row>
                     <Col md={12}>
                         <div className="logo">
