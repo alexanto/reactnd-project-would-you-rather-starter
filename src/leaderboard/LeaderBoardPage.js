@@ -1,9 +1,19 @@
 import React, { Component } from 'react';
+import './LeaderBoardPage.scss';
+import LeaderBoardItem from './LeaderBoardItem';
+import { Grid, Row, Col } from "react-bootstrap";
 
 class LeaderBoardPage extends Component {
     render() {
         return (
-            <p>The leaderBoard page works!</p>
+            <Grid className="leader-board">
+                <Row>
+                    <Col md={6} mdOffset={3}>
+                        <LeaderBoardItem/>
+                    </Col>
+                </Row>
+            </Grid>
+
         )
     }
 }
