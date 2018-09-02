@@ -8,7 +8,7 @@ import NotFound from './notfound/NotFound';
 import Home from './homepage/Home';
 import LoginPage from './signup-and-login/LoginPage';
 import SignUpPage from './signup-and-login/SignUpPage';
-import CreateQuestionPage from './create-question/CreateQuestionPage';
+import CreateQuestion from './create-question/CreateQuestion';
 import LeaderBoardPage from './leaderboard/LeaderBoardPage';
 import NavigationBar from './navigation/NavigationBar';
 
@@ -37,7 +37,7 @@ const routes = [
     {
         path: "/createquestion",
         navBar: () => <NavigationBar/>,
-        main: () => <CreateQuestionPage/>
+        main: () => <CreateQuestion/>
     },
     {
         path: "*",
