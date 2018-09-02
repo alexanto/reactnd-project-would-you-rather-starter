@@ -10,22 +10,70 @@ import LoginPage from './signup-and-login/LoginPage';
 import SignUpPage from './signup-and-login/SignUpPage';
 import CreateQuestionPage from './create-question/CreateQuestionPage';
 import LeaderBoardPage from './leaderboard/LeaderBoardPage';
+import NavigationBar from './navigation/NavigationBar';
+
+const routes = [
+    {
+        path: "/",
+        exact: true,
+        navBar: () => <NavigationBar/>,
+        main: () => <Home/>
+    },
+    {
+        path: "/login",
+        navBar: () => null,
+        main: () => <LoginPage/>
+    },
+    {
+        path: "/signup",
+        navBar: () => null,
+        main: () => <SignUpPage/>
+    },
+    {
+        path: "/leaderboard",
+        navBar: () => <NavigationBar/>,
+        main: () => <LeaderBoardPage/>
+    },
+    {
+        path: "/createquestion",
+        navBar: () => <NavigationBar/>,
+        main: () => <CreateQuestionPage/>
+    },
+    {
+        path: "*",
+        navBar: () => <NavigationBar/>,
+        main: () => <NotFound/>
+    }
+];
+
 
 class App extends Component {
   render() {
     return (
-        <Router>
-          <div className="app">
-            <Switch>
-              <Route path="/login" render={()=><LoginPage/> } />
-              <Route path="/signup" render={()=><SignUpPage/> } />
-              <Route path="/"  exact={true} render={()=><Home/> } />
-              <Route path="/leaderboard" render={()=><LeaderBoardPage/> } />
-              <Route path="/createquestion" render={()=><CreateQuestionPage/> } />
-              <Route path="*" render={()=><NotFound/> } />
-            </Switch>
-          </div>
-        </Router>
+      <Router>
+            <div className="app">
+                <Switch>
+                  {routes.map((route, index) => (
+                      <Route
+                          key={index}
+                          path={route.path}
+                          exact={route.exact}
+                          component={route.navBar}
+                      />
+                  ))}
+                </Switch>
+                <Switch>
+                  {routes.map((route, index) => (
+                      <Route
+                          key={index}
+                          path={route.path}
+                          exact={route.exact}
+                          component={route.main}
+                      />
+                  ))}
+                </Switch>
+            </div>
+      </Router>
     );
   }
 }
