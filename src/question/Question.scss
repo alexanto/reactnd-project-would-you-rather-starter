@@ -1,0 +1,96 @@
+@import '../index.scss';
+
+.question {
+  border: 2px solid  $gray-light;
+  border-radius: 10px;
+  margin: 0 0 10px 0;
+
+  .card-header {
+    background: $gray-light2;
+    border-bottom: 2px solid  $gray-light;
+    border-radius: 9px 9px 0 0;
+    font-weight: 700;
+    padding: 10px;
+    text-align: left;
+  }
+
+  .avatar-pic {
+    background: $white;
+    background-repeat: no-repeat;
+    border: 2px solid $gray-light;
+    border-radius: 50%;
+    height: 114px;
+    margin-right: 20px;
+    width: 114px;
+  }
+  
+  .question-content {
+    display: flex;
+    padding: 10px;
+
+    .content {
+      flex: 1;
+
+      .first-part {
+        font-weight: 700;
+        text-align: left;
+      }
+
+      .question-mark {
+        font-family: 'Pacifico', cursive;
+        font-size: 32px;
+      }
+
+      .view-poll,
+      .submit {
+        margin-top: 10px;
+      }
+
+      .choices {
+        text-align: left;
+        .radio input[type=radio] {
+          height: 13px;
+        }
+      }
+
+      .results {
+        margin-top: 10px;
+
+        .choice {
+          background: $gray-light2;
+          border: 2px solid  $gray-light;
+          border-radius: 10px;
+          padding: 20px;
+
+          &:first-child {
+            margin-bottom: 10px;
+          }
+          
+          .choice-text {
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-align: left;
+          }
+
+          .progress {
+            margin-bottom: 10px;
+          }
+
+          .votes {
+            font-weight: 700;
+          }
+
+           &.chosen {
+             border-color: $primary-dark2;
+             background: $primary-light;
+
+             .choice-text {
+               color: $primary-dark2;
+             }
+
+           }
+        }
+      }
+    }
+  }
+}

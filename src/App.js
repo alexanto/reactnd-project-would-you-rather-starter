@@ -8,9 +8,10 @@ import NotFound from './notfound/NotFound';
 import Home from './homepage/Home';
 import LoginPage from './signup-and-login/LoginPage';
 import SignUpPage from './signup-and-login/SignUpPage';
-import CreateQuestion from './create-question/CreateQuestion';
+import CreateQuestion from './question/CreateQuestion';
 import LeaderBoardPage from './leaderboard/LeaderBoardPage';
 import NavigationBar from './navigation/NavigationBar';
+import PollPage from './question/PollPage';
 
 const routes = [
     {
@@ -38,6 +39,11 @@ const routes = [
         path: "/createquestion",
         navBar: () => <NavigationBar/>,
         main: () => <CreateQuestion/>
+    },
+    {
+        path: "/question/:id",
+        navBar: () => <NavigationBar/>,
+        main: () => <PollPage/>
     },
     {
         path: "*",
