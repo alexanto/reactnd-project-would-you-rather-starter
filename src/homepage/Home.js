@@ -1,9 +1,28 @@
 import React, { Component } from 'react';
+import { Grid, Tabs, Tab, Row, Col } from "react-bootstrap";
+import Question from '../question/Question';
+import './Home.scss';
 
 class Home extends Component {
     render() {
         return (
-            <p>The home page works!</p>
+        <Grid className="leader-board">
+            <Row>
+                <Col md={6} mdOffset={3}>
+                    <Tabs defaultActiveKey={1} animation={false}>
+                        <Tab eventKey={1} title="Unanswered Questions">
+                            <Question/>
+                            <Question/>
+                        </Tab>
+                        <Tab eventKey={2} title="Answered Questions">
+                            <Question/>
+                            <Question/>
+                            <Question/>
+                        </Tab>
+                    </Tabs>
+                </Col>
+            </Row>
+        </Grid>
         )
     }
 }

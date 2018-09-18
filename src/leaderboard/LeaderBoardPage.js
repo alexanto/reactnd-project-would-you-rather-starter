@@ -13,7 +13,6 @@ class LeaderBoardPage extends Component {
                     </Col>
                 </Row>
             </Grid>
-
         )
     }
 }
