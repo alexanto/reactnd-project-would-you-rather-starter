@@ -3,7 +3,14 @@ import { Grid, Row, Col, Button, FormControl } from "react-bootstrap";
 import './signup-and-login.scss';
 
 class LoginPage extends Component {
+
+    login = () => {
+
+    };
+
+
     render() {
+
         return (
             <Grid className="login">
                 <Row>
@@ -15,7 +22,7 @@ class LoginPage extends Component {
                         <form>
                             <FormControl type="text" className="username"/>
                             <FormControl type="password" className="pwd"/>
-                            <Button bsStyle="primary" className="sign-in"> Login</Button>
+                            <Button bsStyle="primary" className="sign-in" onClick={this.login}> Login</Button>
                             <p>Do not have an account yet? Sign up!</p>
                             <Button bsStyle="primary" className="sign-up"> Sign Up</Button>
                         </form>

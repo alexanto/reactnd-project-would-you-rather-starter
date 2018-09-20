@@ -12,43 +12,51 @@ import CreateQuestion from './question/CreateQuestion';
 import LeaderBoardPage from './leaderboard/LeaderBoardPage';
 import NavigationBar from './navigation/NavigationBar';
 import PollPage from './question/PollPage';
+import PrivateRoute from './auth/PrivateRoute';
 
 const routes = [
     {
         path: "/",
         exact: true,
         navBar: () => <NavigationBar/>,
-        main: () => <Home/>
+        main: () => <Home/>,
+        private: true
     },
     {
         path: "/login",
         navBar: () => null,
-        main: () => <LoginPage/>
+        main: () => <LoginPage/>,
+        private: false
     },
     {
         path: "/signup",
         navBar: () => null,
-        main: () => <SignUpPage/>
+        main: () => <SignUpPage/>,
+        private: false
     },
     {
         path: "/leaderboard",
         navBar: () => <NavigationBar/>,
-        main: () => <LeaderBoardPage/>
+        main: () => <LeaderBoardPage/>,
+        private: true
     },
     {
         path: "/createquestion",
         navBar: () => <NavigationBar/>,
-        main: () => <CreateQuestion/>
+        main: () => <CreateQuestion/>,
+        private: true
     },
     {
         path: "/question/:id",
         navBar: () => <NavigationBar/>,
-        main: () => <PollPage/>
+        main: () => <PollPage/>,
+        private: true
     },
     {
         path: "*",
         navBar: () => <NavigationBar/>,
-        main: () => <NotFound/>
+        main: () => <NotFound/>,
+        private: false
     }
 ];
 
@@ -70,7 +78,14 @@ class App extends Component {
                 </Switch>
                 <Switch>
                   {routes.map((route, index) => (
-                      <Route
+                      route.private
+                          ?   <PrivateRoute
+                              key={index}
+                              path={route.path}
+                              exact={route.exact}
+                              component={route.main}
+                                />
+                          : <Route
                           key={index}
                           path={route.path}
                           exact={route.exact}
