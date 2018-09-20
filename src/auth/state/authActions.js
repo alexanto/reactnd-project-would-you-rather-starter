@@ -1,9 +1,10 @@
 export const AUTHENTICATE = 'AUTHENTICATE';
 export const SIGNOUT = 'SIGNOUT';
 
-export function authenticate() {
+export function authenticate(userId) {
     return {
-        type: AUTHENTICATE
+        type: AUTHENTICATE,
+        userId
     }
 }
 

@@ -19,8 +19,6 @@ class PrivateRoute extends Component {
     }
 }
 
-const mapStateToProps = state => ({
-    isAuthenticated: getIsAuthenticated(state)
-});
-
-export default connect(mapStateToProps) (PrivateRoute);
+export default connect(
+    (state) => ({isAuthenticated: getIsAuthenticated(state)})
+) (PrivateRoute);

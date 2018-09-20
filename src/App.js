@@ -13,6 +13,8 @@ import LeaderBoardPage from './leaderboard/LeaderBoardPage';
 import NavigationBar from './navigation/NavigationBar';
 import PollPage from './question/PollPage';
 import PrivateRoute from './auth/PrivateRoute';
+import { connect } from "react-redux";
+import { loadUsers } from "./signup-and-login/state/Actions";
 
 const routes = [
     {
@@ -62,41 +64,47 @@ const routes = [
 
 
 class App extends Component {
-  render() {
-    return (
-      <Router>
-            <div className="app">
-                <Switch>
-                  {routes.map((route, index) => (
-                      <Route
-                          key={index}
-                          path={route.path}
-                          exact={route.exact}
-                          component={route.navBar}
-                      />
-                  ))}
-                </Switch>
-                <Switch>
-                  {routes.map((route, index) => (
-                      route.private
-                          ?   <PrivateRoute
-                              key={index}
-                              path={route.path}
-                              exact={route.exact}
-                              component={route.main}
-                                />
-                          : <Route
-                          key={index}
-                          path={route.path}
-                          exact={route.exact}
-                          component={route.main}
-                      />
-                  ))}
-                </Switch>
-            </div>
-      </Router>
-    );
-  }
+
+    componentDidMount() {
+        const { dispatch } = this.props;
+        dispatch(loadUsers());
+    }
+
+    render() {
+        return (
+              <Router>
+                    <div className="app">
+                        <Switch>
+                            {routes.map((route, index) => (
+                              <Route
+                                  key={index}
+                                  path={route.path}
+                                  exact={route.exact}
+                                  component={route.navBar}
+                              />
+                            ))}
+                        </Switch>
+                        <Switch>
+                            {routes.map((route, index) => (
+                              route.private
+                                  ?   <PrivateRoute
+                                      key={index}
+                                      path={route.path}
+                                      exact={route.exact}
+                                      component={route.main}
+                                        />
+                                  : <Route
+                                  key={index}
+                                  path={route.path}
+                                  exact={route.exact}
+                                  component={route.main}
+                              />
+                            ))}
+                        </Switch>
+                    </div>
+              </Router>
+        );
+    }
 }
 
-export default App;
+export default connect()(App);
