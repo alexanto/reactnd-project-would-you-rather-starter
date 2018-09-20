@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Grid, Row, Col, Button, FormControl } from "react-bootstrap";
+import { Grid, Row, Col, Button, FormControl, Alert } from "react-bootstrap";
 import './signup-and-login.scss';
 import { connect } from "react-redux";
 import { getUsers } from "./state/Selectors";
@@ -12,7 +12,7 @@ class LoginPage extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            redirectToReferrer: false
+            inCorrectUser: false
         }
     }
 
@@ -21,7 +21,7 @@ class LoginPage extends Component {
         if(user) {
             this.props.authenticate(user.id);
         } else {
-            console.log('display error message');
+            this.setState({inCorrectUser: true})
         }
     };
 
@@ -41,6 +41,7 @@ class LoginPage extends Component {
     render() {
 
         const {isAuthenticated} = this.props;
+        const {inCorrectUser} = this.state;
 
         if (isAuthenticated === true) {
             return <Redirect to='/' />
@@ -57,6 +58,10 @@ class LoginPage extends Component {
                         <form>
                             <FormControl type="text" className="username" onChange={this.handleChange} name="username"/>
                             <FormControl type="password" className="pwd" onChange={this.handleChange} name="password"/>
+                            {inCorrectUser &&
+                            <Alert bsStyle="danger">
+                                <strong>Error!</strong> Incorrect username or password
+                            </Alert>}
                             <Button bsStyle="primary" className="sign-in" onClick={this.login}> Login</Button>
                             <p>Do not have an account yet? Sign up!</p>
                             <Button bsStyle="primary" className="sign-up"> Sign Up</Button>
