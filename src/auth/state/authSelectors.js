@@ -11,3 +11,8 @@ export const getAuthenticatedUser = createSelector(
     authenticationSelector,
     state => state.authenticatedUser
 );
+
+export const getProtectedPath = createSelector(
+    authenticationSelector,
+    state => state.protectedInitialPage
+);

@@ -9,7 +9,7 @@ class Home extends Component {
         <Grid className="leader-board">
             <Row>
                 <Col md={6} mdOffset={3}>
-                    <Tabs defaultActiveKey={1} animation={false}>
+                    <Tabs defaultActiveKey={1} animation={false} id="home-tabs">
                         <Tab eventKey={1} title="Unanswered Questions">
                             <Question/>
                             <Question/>

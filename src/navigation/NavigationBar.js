@@ -31,11 +31,11 @@ class NavigationBar extends Component {
                     </Navbar.Brand>
                 </Navbar.Header>
                 <Nav>
-                    <NavItem  href="/createquestion">
-                        New Question
+                    <NavItem>
+                        <Link to="/createquestion">New Question</Link>
                     </NavItem>
                     <NavItem href="/leaderboard">
-                      Leaderboard
+                        <Link to="/leaderboard">Leaderboard</Link>
                     </NavItem>
                 </Nav>
                 <Nav pullRight>

@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import { getUsers } from "./state/Selectors";
 import { bindActionCreators } from "redux";
 import { authenticate } from "../auth/state/authActions";
-import { getIsAuthenticated } from "../auth/state/authSelectors";
+import { getIsAuthenticated, getProtectedPath } from "../auth/state/authSelectors";
 import { Redirect } from "react-router";
 
 class LoginPage extends Component {
@@ -39,12 +39,11 @@ class LoginPage extends Component {
     };
 
     render() {
-
-        const {isAuthenticated} = this.props;
+        const {isAuthenticated, protectedPatch} = this.props;
         const {inCorrectUser} = this.state;
 
         if (isAuthenticated === true) {
-            return <Redirect to='/' />
+            return <Redirect to={protectedPatch} />
         }
 
         return (
@@ -76,7 +75,8 @@ class LoginPage extends Component {
 export default connect(
     (state) => ({
         users: getUsers(state),
-        isAuthenticated: getIsAuthenticated(state)
+        isAuthenticated: getIsAuthenticated(state),
+        protectedPatch: getProtectedPath(state)
     }),
     (dispatch) => bindActionCreators({authenticate}, dispatch)
 ) (LoginPage);

@@ -3,5 +3,6 @@ const isAuthenticated = authUser ? true : false;
 
 export default {
     isAuthenticated: isAuthenticated,
-    authenticatedUser: authUser
+    authenticatedUser: authUser,
+    protectedInitialPage: '/'
 }
