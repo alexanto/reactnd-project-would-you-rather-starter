@@ -16,7 +16,6 @@ class PrivateRoute extends Component {
     }
     render() {
         const {component: Component, isAuthenticated, ...rest} = this.props;
-
         return (
             <Route {...rest} render={(props) => (
                 isAuthenticated === true

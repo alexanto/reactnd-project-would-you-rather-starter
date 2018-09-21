@@ -6,7 +6,7 @@ import { Provider } from "react-redux";
 import { applyMiddleware, combineReducers, createStore } from "redux";
 import authenticationReducer from './auth/state/authReducer';
 import { composeWithDevTools } from "redux-devtools-extension";
-import usersReducer from './signup-and-login/state/Reducer';
+import usersReducer from './login/state/Reducer';
 import thunk from 'redux-thunk';
 
 const reducers = combineReducers({

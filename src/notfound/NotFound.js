@@ -1,10 +1,11 @@
 import React from 'react';
 import { Grid, Row, Col, Button, Glyphicon } from "react-bootstrap";
 import './NotFound.scss';
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 //https://bootsnipp.com/snippets/Qb71
 class NotFound extends React.Component {
+
     render() {
         return (
             <Grid>
@@ -19,10 +20,12 @@ class NotFound extends React.Component {
                                 Sorry, an error has occured, requested page does not exist!
                             </p>
                         </code>
-                        <Button bsStyle="primary">
-                            <Glyphicon glyph="home" />
-                            <Link to="/">Take Me Home</Link>
-                        </Button>
+                        <Link to="/">
+                            <Button bsStyle="primary">
+                                <Glyphicon glyph="home" />
+                                Take Me Home
+                            </Button>
+                        </Link>
                     </Col>
                 </Row>
             </Grid>

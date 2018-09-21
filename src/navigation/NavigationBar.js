@@ -7,7 +7,7 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { signOut } from "../auth/state/authActions";
 import { getAuthenticatedUser, getIsAuthenticated } from "../auth/state/authSelectors";
-import { Redirect } from "react-router";
+import { getUsers } from "../login/state/Selectors";
 
 class NavigationBar extends Component {
 
@@ -15,13 +15,12 @@ class NavigationBar extends Component {
         this.props.signOut();
     };
 
+    getUserName = () => {
+        const {users, authenticatedUser} = this.props;
+        return users[authenticatedUser] ? users[authenticatedUser].name : '';
+    }
+
     render() {
-
-        const {isAuthenticated, authenticatedUser} = this.props;
-
-        if (!isAuthenticated === true) {
-            return <Redirect to='/login' />
-        }
 
         return (
             <Navbar className="navigation">
@@ -31,22 +30,22 @@ class NavigationBar extends Component {
                     </Navbar.Brand>
                 </Navbar.Header>
                 <Nav>
-                    <NavItem>
-                        <Link to="/createquestion">New Question</Link>
+                    <NavItem componentClass={Link} href="/createquestion" to="/createquestion">
+                        New Question
                     </NavItem>
-                    <NavItem href="/leaderboard">
-                        <Link to="/leaderboard">Leaderboard</Link>
+                    <NavItem componentClass={Link} href="/leaderboard" to="/leaderboard">
+                        Leaderboard
                     </NavItem>
                 </Nav>
                 <Nav pullRight>
                     <NavItem className="avatar">
-                        Hello, {authenticatedUser}!
+                        Hello, {this.getUserName()}!
                         <div>
                             <div style={{backgroundImage: `url(${avatar})`}}></div>
                         </div>
                     </NavItem>
-                    <NavItem onClick={this.signOut}>
-                        Log Out
+                    <NavItem onClick={this.signOut} componentClass={Link} href="/login" to="/login">
+                        Sign Out
                     </NavItem>
                 </Nav>
             </Navbar>
@@ -56,6 +55,7 @@ class NavigationBar extends Component {
 
 export default connect(
     (state) => ({
+        users: getUsers(state),
         isAuthenticated: getIsAuthenticated(state),
         authenticatedUser: getAuthenticatedUser(state)
     }),

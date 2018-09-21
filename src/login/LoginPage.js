@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Grid, Row, Col, Button, FormControl, Alert } from "react-bootstrap";
-import './signup-and-login.scss';
+import './login.scss';
 import { connect } from "react-redux";
 import { getUsers } from "./state/Selectors";
 import { bindActionCreators } from "redux";
@@ -40,7 +40,7 @@ class LoginPage extends Component {
 
     render() {
         const {isAuthenticated, protectedPatch} = this.props;
-        const {inCorrectUser} = this.state;
+        const {inCorrectUser, username, password} = this.state;
 
         if (isAuthenticated === true) {
             return <Redirect to={protectedPatch} />
@@ -61,9 +61,7 @@ class LoginPage extends Component {
                             <Alert bsStyle="danger">
                                 <strong>Error!</strong> Incorrect username or password
                             </Alert>}
-                            <Button bsStyle="primary" className="sign-in" onClick={this.login}> Login</Button>
-                            <p>Do not have an account yet? Sign up!</p>
-                            <Button bsStyle="primary" className="sign-up"> Sign Up</Button>
+                            <Button bsStyle="primary" className="sign-in" onClick={this.login} disabled={!username || !password}> Login</Button>
                         </form>
                     </Col>
                 </Row>

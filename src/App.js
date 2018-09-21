@@ -6,15 +6,14 @@ import {
 import './App.scss';
 import NotFound from './notfound/NotFound';
 import Home from './homepage/Home';
-import LoginPage from './signup-and-login/LoginPage';
-import SignUpPage from './signup-and-login/SignUpPage';
+import LoginPage from './login/LoginPage';
 import CreateQuestion from './question/CreateQuestion';
 import LeaderBoardPage from './leaderboard/LeaderBoardPage';
 import NavigationBar from './navigation/NavigationBar';
 import PollPage from './question/PollPage';
 import PrivateRoute from './auth/PrivateRoute';
 import { connect } from "react-redux";
-import { loadUsers } from "./signup-and-login/state/Actions";
+import { loadUsers } from "./login/state/Actions";
 
 const routes = [
     {
@@ -26,30 +25,28 @@ const routes = [
     },
     {
         path: "/login",
+        exact: true,
         navBar: () => null,
         main: () => <LoginPage/>,
         private: false
     },
     {
-        path: "/signup",
-        navBar: () => null,
-        main: () => <SignUpPage/>,
-        private: false
-    },
-    {
         path: "/leaderboard",
+        exact: true,
         navBar: () => <NavigationBar/>,
         main: () => <LeaderBoardPage/>,
         private: true
     },
     {
         path: "/createquestion",
+        exact: true,
         navBar: () => <NavigationBar/>,
         main: () => <CreateQuestion/>,
         private: true
     },
     {
         path: "/question/:id",
+        exact: true,
         navBar: () => <NavigationBar/>,
         main: () => <PollPage/>,
         private: true
@@ -58,7 +55,7 @@ const routes = [
         path: "*",
         navBar: () => <NavigationBar/>,
         main: () => <NotFound/>,
-        private: false
+        private: true
     }
 ];
 
