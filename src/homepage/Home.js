@@ -13,14 +13,6 @@ class Home extends Component {
         return this.props.users.find(user => question.author === user.id);
     };
 
-    getStatistics = (question) => {
-        return {
-            percentage: 60,
-            voted: 1,
-            all: 3
-        }
-    };
-
     render() {
 
         const {unansweredByUser, answeredByUser, authenticatedUser} = this.props;

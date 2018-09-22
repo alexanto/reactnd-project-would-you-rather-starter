@@ -11,13 +11,13 @@ export const getQuestions = createSelector(
 export const getUnansweredByUser = createSelector(
     state => state.questions.questions,
     questions => memoize(
-        user => questions.filter(question => !question.optionOne.votes.includes(user) && !question.optionTwo.votes.includes(user))
+        user => questions.filter(question => !question.optionOne.votes.includes(user) && !question.optionTwo.votes.includes(user)).sort((a,b) => b.timestamp - a.timestamp)
     )
 );
 
 export const getAnsweredByUser = createSelector(
     state => state.questions.questions,
     questions => memoize(
-        user => questions.filter(question => question.optionOne.votes.includes(user) || question.optionTwo.votes.includes(user))
+        user => questions.filter(question => question.optionOne.votes.includes(user) || question.optionTwo.votes.includes(user)).sort((a,b) => b.timestamp - a.timestamp)
     )
 );

@@ -17,7 +17,7 @@ class Question extends Component {
     };
 
     handleSubmit = () => {
-
+        this.props.handleSubmit(this.state.checked);
     };
 
     render() {
@@ -58,10 +58,10 @@ class Question extends Component {
                     <div className="content">
                         <p className="first-part">Would you rather...</p>
                         <FormGroup className="choices">
-                            <Radio name="question" onChange={this.handleChange} value={optionOne}>
+                            <Radio name="question" onChange={this.handleChange} value="optionOne">
                                 {optionOne}
                             </Radio>{' '}
-                            <Radio name="question" onChange={this.handleChange} value={optionTwo}>
+                            <Radio name="question" onChange={this.handleChange} value="optionTwo">
                                 {optionTwo}
                             </Radio>{' '}
                         </FormGroup>
