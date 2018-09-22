@@ -75,8 +75,8 @@ class Question extends Component {
                 const allVotes = question.optionOne.votes.length + question.optionTwo.votes.length;
                 const optionOneLength = question.optionOne.votes.length;
                 const optionTwoLength = question.optionTwo.votes.length;
-                const optionOnePercentage = optionOneLength / allVotes * 100;
-                const optionTwoPercentage = optionTwoLength / allVotes * 100;
+                const optionOnePercentage = parseFloat((optionOneLength / allVotes * 100).toFixed(2));
+                const optionTwoPercentage = parseFloat((optionTwoLength / allVotes * 100).toFixed(2));
 
                 detailContent =
                     <div className="content">

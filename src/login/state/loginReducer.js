@@ -10,17 +10,13 @@ export default (state = initialState, action) => {
             return {...state, users: Object.values(users)};
         case ANSWER_QUESTION:
             const indexOfUser = state.users.findIndex(item => item.id === user);
-
             const newUser = state.users[indexOfUser];
-            console.log(newUser);
             newUser.answers[id] = answer;
-             const newUsers = state.users.slice(0, indexOfUser).concat([newUser]).concat(state.users.slice(indexOfUser + 1));
+            const newUsers = state.users.slice(0, indexOfUser).concat([newUser]).concat(state.users.slice(indexOfUser + 1));
             return {
                 ...state,
                 users: newUsers
             };
-
-
         default:
             return state;
     }
