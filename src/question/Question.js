@@ -20,6 +20,10 @@ class Question extends Component {
         this.props.handleSubmit(this.state.checked);
     };
 
+    isChosen = (votes) => {
+        return votes.includes(this.props.authenticatedUser);
+    };
+
     render() {
         const {question, author, isDetail, isAnswered} = this.props;
         const {checked} = this.state;
@@ -68,19 +72,25 @@ class Question extends Component {
                         <Button bsStyle="primary" className="submit" disabled={!checked} onClick={this.handleSubmit}> Submit</Button>
                     </div>
             } else {
+                const allVotes = question.optionOne.votes.length + question.optionTwo.votes.length;
+                const optionOneLength = question.optionOne.votes.length;
+                const optionTwoLength = question.optionTwo.votes.length;
+                const optionOnePercentage = optionOneLength / allVotes * 100;
+                const optionTwoPercentage = optionTwoLength / allVotes * 100;
+
                 detailContent =
                     <div className="content">
                         <p className="first-part">Results: </p>
                         <div className="results">
-                            <div className="choice chosen">
+                            <div className={this.isChosen(question.optionOne.votes) ? 'choice chosen': 'choice'}>
                                 <p className="choice-text">Would you rather {question.optionOne.text}?</p>
-                                <ProgressBar now={60} label={`${60}%`} />
-                                <p className="votes">1 out of 2 votes</p>
+                                <ProgressBar now={optionOnePercentage} label={`${optionOnePercentage}%`} />
+                                <p className="votes">{optionOneLength} out of {allVotes} votes</p>
                             </div>
-                            <div className="choice">
+                            <div className={this.isChosen(question.optionTwo.votes) ? 'choice chosen': 'choice'}>
                                 <p className="choice-text">Would you rather {question.optionTwo.text}?</p>
-                                <ProgressBar now={60} label={`${60}%`} />
-                                <p className="votes">1 out of 2 votes</p>
+                                <ProgressBar now={optionTwoPercentage} label={`${optionTwoPercentage}%`} />
+                                <p className="votes">{optionTwoLength} out of {allVotes} votes</p>
                             </div>
                         </div>
                     </div>

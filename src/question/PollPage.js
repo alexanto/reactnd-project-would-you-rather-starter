@@ -14,8 +14,6 @@ class PollPage extends Component {
     handleSubmit = (answer) => {
         const id = this.getQuestion().id;
 
-        console.log(this.props.authenticatedUser);
-
         this.props.answerQuestion({
             user: this.props.authenticatedUser,
             id,
@@ -32,16 +30,25 @@ class PollPage extends Component {
         return this.props.users.find(user => user.id === question.author);
     };
 
+    getIsAnswered = (questionId) => {
+        const authUserDetails = this.props.users.find(user => user.id === this.props.authenticatedUser);
+        return questionId in authUserDetails.answers;
+    };
+
     render() {
         const question = this.getQuestion();
         const author = this.getAuthor(question);
-        const isAnswered = false;
+        const {authenticatedUser} = this.props;
+        let questionEl;
+        if(question && this.props.users.length > 0) {
+             questionEl = <Question authenticatedUser={authenticatedUser} question={question?question:{}} author={author?author:{}} isDetail={true} isAnswered={this.getIsAnswered(question.id)} handleSubmit={this.handleSubmit}/>
+        }
 
         return (
             <Grid className="poll">
                 <Row>
                     <Col md={6} mdOffset={3}>
-                        <Question question={question?question:{}} author={author?author:{}} isDetail={true} isAnswered={isAnswered} handleSubmit={this.handleSubmit}/>
+                        {questionEl}
                     </Col>
                 </Row>
             </Grid>
