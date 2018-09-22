@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Grid, Row, Col, Button, FormControl, Alert } from "react-bootstrap";
 import './login.scss';
 import { connect } from "react-redux";
-import { getUsers } from "./state/Selectors";
+import { getUsers } from "./state/loginSelectors";
 import { bindActionCreators } from "redux";
 import { authenticate } from "../auth/state/authActions";
 import { getIsAuthenticated, getProtectedPath } from "../auth/state/authSelectors";
@@ -26,8 +26,7 @@ class LoginPage extends Component {
     };
 
     findMatchingUser() {
-        const userArray = Object.values(this.props.users);
-        return userArray.find((user) => (user.id === this.state.username && user.password === this.state.password))
+        return this.props.users.find((user) => (user.id === this.state.username && user.password === this.state.password))
     };
 
     handleChange = (e) => {

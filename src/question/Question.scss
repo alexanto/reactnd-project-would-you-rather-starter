@@ -17,6 +17,8 @@
   .avatar-pic {
     background: $white;
     background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
     border: 2px solid $gray-light;
     border-radius: 50%;
     height: 114px;
@@ -39,6 +41,11 @@
       .question-mark {
         font-family: 'Pacifico', cursive;
         font-size: 32px;
+      }
+      
+      .non-detail-content {
+        margin: 10px 0 0 0;
+        text-align: left;
       }
 
       .view-poll,

@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 import { Navbar, Nav, NavItem } from "react-bootstrap";
 import { Link } from 'react-router-dom';
 import './NavigationBar.scss';
-import avatar from '../img/ninja.svg';
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { signOut } from "../auth/state/authActions";
 import { getAuthenticatedUser, getIsAuthenticated } from "../auth/state/authSelectors";
-import { getUsers } from "../login/state/Selectors";
+import { getUsers } from "../login/state/loginSelectors";
+import { loadQuestions } from "../question/state/questionActions";
 
 class NavigationBar extends Component {
 
@@ -17,7 +17,22 @@ class NavigationBar extends Component {
 
     getUserName = () => {
         const {users, authenticatedUser} = this.props;
-        return users[authenticatedUser] ? users[authenticatedUser].name : '';
+        return  users.length > 0 ? users.find(user => user.id === authenticatedUser).name : '';
+    };
+
+    getUserAvatar = () => {
+        const {users, authenticatedUser} = this.props;
+        if(users.length > 0) {
+            const levels = window.location.href.split('/').length - 2;
+            const levelUpString = '../'.repeat(levels - 2);
+            return levelUpString + users.find(user => user.id === authenticatedUser).avatarURL
+        } else {
+            return '';
+        }
+    };
+
+    componentDidMount() {
+        this.props.loadQuestions();
     }
 
     render() {
@@ -30,7 +45,7 @@ class NavigationBar extends Component {
                     </Navbar.Brand>
                 </Navbar.Header>
                 <Nav>
-                    <NavItem componentClass={Link} href="/createquestion" to="/createquestion">
+                    <NavItem componentClass={Link} href="/add" to="/add">
                         New Question
                     </NavItem>
                     <NavItem componentClass={Link} href="/leaderboard" to="/leaderboard">
@@ -41,7 +56,7 @@ class NavigationBar extends Component {
                     <NavItem className="avatar">
                         Hello, {this.getUserName()}!
                         <div>
-                            <div style={{backgroundImage: `url(${avatar})`}}></div>
+                            <div style={{backgroundImage: `url(${this.getUserAvatar()})`}}></div>
                         </div>
                     </NavItem>
                     <NavItem onClick={this.signOut} componentClass={Link} href="/login" to="/login">
@@ -59,5 +74,5 @@ export default connect(
         isAuthenticated: getIsAuthenticated(state),
         authenticatedUser: getAuthenticatedUser(state)
     }),
-    (dispatch) => bindActionCreators({signOut}, dispatch)
+    (dispatch) => bindActionCreators({signOut, loadQuestions}, dispatch)
 )(NavigationBar);

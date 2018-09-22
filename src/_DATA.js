@@ -2,7 +2,7 @@ let users = {
   sarahedo: {
     id: 'sarahedo',
     name: 'Sarah Edo',
-    avatarURL: '/',
+    avatarURL: 'img/ninja.svg',
     answers: {
       "8xf0y6ziyjabvozdd253nd": 'optionOne',
       "6ni6ok3ym7mf1p33lnez": 'optionOne',
@@ -15,7 +15,7 @@ let users = {
   tylermcginnis: {
     id: 'tylermcginnis',
     name: 'Tyler McGinnis',
-    avatarURL: '/',
+    avatarURL: 'img/worm.svg',
     answers: {
       "vthrdm985a262al8qx3do": 'optionOne',
       "xj352vofupe1dqz9emx13r": 'optionTwo',
@@ -26,19 +26,19 @@ let users = {
   johndoe: {
     id: 'johndoe',
     name: 'John Doe',
-    avatarURL: '/',
+    avatarURL: 'img/stormtrooper.svg',
     answers: {
       "xj352vofupe1dqz9emx13r": 'optionOne',
       "vthrdm985a262al8qx3do": 'optionTwo',
       "6ni6ok3ym7mf1p33lnez": 'optionOne'
     },
     questions: ['6ni6ok3ym7mf1p33lnez', 'xj352vofupe1dqz9emx13r'],
-    password: 'admin'
+    password: 'noone'
   },
   admin: {
       id: 'admin',
       name: 'Admin',
-      avatarURL: '/',
+      avatarURL: 'img/glasses.svg',
       answers: {
           "xj352vofupe1dqz9emx13r": 'optionOne',
           "vthrdm985a262al8qx3do": 'optionTwo',
@@ -46,7 +46,31 @@ let users = {
       },
       questions: ['6ni6ok3ym7mf1p33lnez', 'xj352vofupe1dqz9emx13r'],
       password: 'admin'
-}
+  },
+  vader: {
+      id: 'vader',
+      name: 'Anakin Skywalker',
+      avatarURL: 'img/deathstar.svg',
+      answers: {
+          "xj352vofupe1dqz9emx13r": 'optionOne',
+          "vthrdm985a262al8qx3do": 'optionTwo',
+          "6ni6ok3ym7mf1p33lnez": 'optionOne'
+      },
+      questions: ['6ni6ok3ym7mf1p33lnez', 'xj352vofupe1dqz9emx13r'],
+      password: 'maythe4thbewithyou'
+  },
+  batman: {
+      id: 'batman',
+      name: 'Bruce Wayne',
+      avatarURL: 'img/batman',
+      answers: {
+          "xj352vofupe1dqz9emx13r": 'optionOne',
+          "vthrdm985a262al8qx3do": 'optionTwo',
+          "6ni6ok3ym7mf1p33lnez": 'optionOne'
+      },
+      questions: ['6ni6ok3ym7mf1p33lnez', 'xj352vofupe1dqz9emx13r'],
+      password: 'hero'
+  }
 };
 
 let questions = {
@@ -128,7 +152,7 @@ let questions = {
       text: 'write Swift'
     }
   },
-}
+};
 
 function generateUID () {
   return Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)

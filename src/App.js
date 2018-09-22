@@ -13,7 +13,7 @@ import NavigationBar from './navigation/NavigationBar';
 import PollPage from './question/PollPage';
 import PrivateRoute from './auth/PrivateRoute';
 import { connect } from "react-redux";
-import { loadUsers } from "./login/state/Actions";
+import { loadUsers } from "./login/state/loginActions";
 
 const routes = [
     {
@@ -38,7 +38,7 @@ const routes = [
         private: true
     },
     {
-        path: "/createquestion",
+        path: "/add",
         exact: true,
         navBar: () => <NavigationBar/>,
         main: () => <CreateQuestion/>,
