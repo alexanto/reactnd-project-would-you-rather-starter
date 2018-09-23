@@ -7,7 +7,6 @@ import { bindActionCreators } from "redux";
 import { signOut } from "../auth/state/authActions";
 import { getAuthenticatedUser, getIsAuthenticated } from "../auth/state/authSelectors";
 import { getUsers } from "../login/state/loginSelectors";
-import { loadQuestions } from "../question/state/questionActions";
 
 class NavigationBar extends Component {
 
@@ -30,10 +29,6 @@ class NavigationBar extends Component {
             return '';
         }
     };
-
-    componentDidMount() {
-        this.props.loadQuestions();
-    }
 
     render() {
 
@@ -74,5 +69,5 @@ export default connect(
         isAuthenticated: getIsAuthenticated(state),
         authenticatedUser: getAuthenticatedUser(state)
     }),
-    (dispatch) => bindActionCreators({signOut, loadQuestions}, dispatch)
+    (dispatch) => bindActionCreators({signOut}, dispatch)
 )(NavigationBar);

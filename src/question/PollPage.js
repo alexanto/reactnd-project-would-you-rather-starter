@@ -37,10 +37,10 @@ class PollPage extends Component {
 
     render() {
         const question = this.getQuestion();
-        const author = this.getAuthor(question);
         const {authenticatedUser} = this.props;
         let questionEl;
         if(question && this.props.users.length > 0) {
+             const author = this.getAuthor(question);
              questionEl = <Question authenticatedUser={authenticatedUser} question={question?question:{}} author={author?author:{}} isDetail={true} isAnswered={this.getIsAnswered(question.id)} handleSubmit={this.handleSubmit}/>
         }
 

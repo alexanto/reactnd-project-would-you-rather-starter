@@ -21,3 +21,8 @@ export const getAnsweredByUser = createSelector(
         user => questions.filter(question => question.optionOne.votes.includes(user) || question.optionTwo.votes.includes(user)).sort((a,b) => b.timestamp - a.timestamp)
     )
 );
+
+export const getIsSaveInProgress = createSelector(
+    questionsSelector,
+    state => state.saveInProgress
+);

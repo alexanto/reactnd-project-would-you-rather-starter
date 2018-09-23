@@ -14,6 +14,7 @@ import PollPage from './question/PollPage';
 import PrivateRoute from './auth/PrivateRoute';
 import { connect } from "react-redux";
 import { loadUsers } from "./login/state/loginActions";
+import { loadQuestions } from "./question/state/questionActions";
 
 const routes = [
     {
@@ -65,6 +66,7 @@ class App extends Component {
     componentDidMount() {
         const { dispatch } = this.props;
         dispatch(loadUsers());
+        dispatch(loadQuestions());
     }
 
     render() {

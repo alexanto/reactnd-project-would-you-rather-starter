@@ -39,36 +39,24 @@ let users = {
       id: 'admin',
       name: 'Admin',
       avatarURL: 'img/glasses.svg',
-      answers: {
-          "xj352vofupe1dqz9emx13r": 'optionOne',
-          "vthrdm985a262al8qx3do": 'optionTwo',
-          "6ni6ok3ym7mf1p33lnez": 'optionOne'
-      },
-      questions: ['6ni6ok3ym7mf1p33lnez', 'xj352vofupe1dqz9emx13r'],
+      answers: {},
+      questions: [],
       password: 'admin'
   },
   vader: {
       id: 'vader',
       name: 'Anakin Skywalker',
       avatarURL: 'img/deathstar.svg',
-      answers: {
-          "xj352vofupe1dqz9emx13r": 'optionOne',
-          "vthrdm985a262al8qx3do": 'optionTwo',
-          "6ni6ok3ym7mf1p33lnez": 'optionOne'
-      },
-      questions: ['6ni6ok3ym7mf1p33lnez', 'xj352vofupe1dqz9emx13r'],
+      answers: {},
+      questions: [],
       password: 'maythe4thbewithyou'
   },
   batman: {
       id: 'batman',
       name: 'Bruce Wayne',
       avatarURL: 'img/batman',
-      answers: {
-          "xj352vofupe1dqz9emx13r": 'optionOne',
-          "vthrdm985a262al8qx3do": 'optionTwo',
-          "6ni6ok3ym7mf1p33lnez": 'optionOne'
-      },
-      questions: ['6ni6ok3ym7mf1p33lnez', 'xj352vofupe1dqz9emx13r'],
+      answers: {},
+      questions: [],
       password: 'hero'
   }
 };
@@ -195,7 +183,7 @@ export function _saveQuestion (question) {
       questions = {
         ...questions,
         [formattedQuestion.id]: formattedQuestion
-      }
+      };
       
       users = {
         ...users,
@@ -203,7 +191,7 @@ export function _saveQuestion (question) {
           ...users[authedUser],
           questions: users[authedUser].questions.concat([formattedQuestion.id])
         }
-      }
+      };
 
       res(formattedQuestion)
     }, 1000)
@@ -223,7 +211,7 @@ export function _saveQuestionAnswer ({ authedUser, qid, answer }) {
             [qid]: answer
           }
         }
-      }
+      };
 
       questions = {
         ...questions,
@@ -234,7 +222,7 @@ export function _saveQuestionAnswer ({ authedUser, qid, answer }) {
             votes: questions[qid][answer].votes.concat([authedUser])
           }
         }
-      }
+      };
 
       res()
     }, 500)
