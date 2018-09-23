@@ -54,7 +54,7 @@ let users = {
   batman: {
       id: 'batman',
       name: 'Bruce Wayne',
-      avatarURL: 'img/batman',
+      avatarURL: 'img/batman.svg',
       answers: {},
       questions: [],
       password: 'hero'
