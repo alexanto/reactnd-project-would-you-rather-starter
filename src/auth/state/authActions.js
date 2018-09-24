@@ -3,6 +3,7 @@ export const SIGNOUT = 'SIGNOUT';
 export const SET_PROTECTED_PATH = 'SET_PROTECTED_PATH';
 
 export function authenticate(userId) {
+    sessionStorage.setItem('authenticatedUser', userId);
     return {
         type: AUTHENTICATE,
         userId
@@ -10,6 +11,7 @@ export function authenticate(userId) {
 }
 
 export function signOut() {
+    sessionStorage.removeItem('authenticatedUser');
     return {
         type: SIGNOUT
     }

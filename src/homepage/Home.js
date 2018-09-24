@@ -37,7 +37,7 @@ class Home extends Component {
                             {answeredQuestionsByUser.map(question =>
                                 {
                                     const author = this.getAuthorByQuestion(question);
-                                    return <Question author={author?author:{}} question={question} key={question.timestamp} isDetail={false} isAnswered={true}/>
+                                    return <Question author={author?author:{}} question={question} key={question.id} isDetail={false} isAnswered={true}/>
                                 }
                             )}
                         </Tab>

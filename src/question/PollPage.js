@@ -8,6 +8,7 @@ import './PollPage.scss';
 import { bindActionCreators } from "redux";
 import { answerQuestion } from "./state/questionActions";
 import { getAuthenticatedUser } from "../auth/state/authSelectors";
+import NotFound from "../notfound/NotFound";
 
 class PollPage extends Component {
 
@@ -36,7 +37,11 @@ class PollPage extends Component {
     };
 
     render() {
+
         const question = this.getQuestion();
+        if (this.props.questions.length > 0 && !question) {
+           return <NotFound/>
+        }
         const {authenticatedUser} = this.props;
         let questionEl;
         if(question && this.props.users.length > 0) {

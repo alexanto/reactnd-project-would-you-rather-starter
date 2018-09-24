@@ -23,17 +23,17 @@
     flex: 1;
     text-align: left;
 
-    h4 {
+    .leader-board-name {
       font-weight: 700;
       margin: 0 0 20px 0;
     }
 
-    hr {
+    .leaderboard-divider {
       margin-top: 10px;
       margin-bottom: 10px;
     }
     
-    p span {
+    .leaderboard-score {
       float: right;
     }
   }
@@ -51,7 +51,7 @@
       border-bottom: 2px solid $gray-light;
       height: 45px;
 
-      p {
+      .score-label-text {
         line-height: 45px;
         font-weight: 700;
       }

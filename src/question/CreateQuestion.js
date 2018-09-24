@@ -25,7 +25,8 @@ class CreateQuestion extends Component {
         });
     };
 
-    handleSubmit = () => {
+    handleSubmit = (e) => {
+        e.preventDefault();
         const {optionOneText, optionTwoText} = this.state;
         this.props.saveQuestion({optionOneText, optionTwoText, author: this.props.authenticatedUser});
 
@@ -48,11 +49,11 @@ class CreateQuestion extends Component {
                 <div>
                     <p>Complete the question:</p>
                     <h3>Would you rather...</h3>
-                    <form>
+                    <form onSubmit={this.handleSubmit}>
                         <FormControl type="text" className="optionOne" onChange={this.handleChange} name="optionOneText"/>
                         <p>OR</p>
                         <FormControl type="text" className="optionTwo" onChange={this.handleChange} name="optionTwoText"/>
-                        <Button bsStyle="primary" className="create" onClick={this.handleSubmit} disabled={!optionOneText || !optionTwoText}> Create</Button>
+                        <Button bsStyle="primary" className="create" disabled={!optionOneText || !optionTwoText} type="submit"> Create</Button>
                     </form>
                 </div>
             </div>

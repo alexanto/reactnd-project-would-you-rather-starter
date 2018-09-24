@@ -16,7 +16,8 @@ class Question extends Component {
         this.setState({checked: e.target.value})
     };
 
-    handleSubmit = () => {
+    handleSubmit = (e) => {
+        e.preventDefault();
         this.props.handleSubmit(this.state.checked);
     };
 
@@ -61,15 +62,17 @@ class Question extends Component {
                 detailContent =
                     <div className="content">
                         <p className="first-part">Would you rather...</p>
-                        <FormGroup className="choices">
-                            <Radio name="question" onChange={this.handleChange} value="optionOne">
-                                {optionOne}
-                            </Radio>{' '}
-                            <Radio name="question" onChange={this.handleChange} value="optionTwo">
-                                {optionTwo}
-                            </Radio>{' '}
-                        </FormGroup>
-                        <Button bsStyle="primary" className="submit" disabled={!checked} onClick={this.handleSubmit}> Submit</Button>
+                        <form onSubmit={this.handleSubmit}>
+                            <FormGroup className="choices">
+                                <Radio name="question" onChange={this.handleChange} value="optionOne">
+                                    {optionOne}
+                                </Radio>{' '}
+                                <Radio name="question" onChange={this.handleChange} value="optionTwo">
+                                    {optionTwo}
+                                </Radio>{' '}
+                            </FormGroup>
+                            <Button bsStyle="primary" className="submit" disabled={!checked} type="submit"> Submit</Button>
+                        </form>
                     </div>
             } else {
                 const allVotes = question.optionOne.votes.length + question.optionTwo.votes.length;
